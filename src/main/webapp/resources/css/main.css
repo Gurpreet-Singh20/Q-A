@@ -1,0 +1,22 @@
+body{
+font-family: 'Abril Fatface', cursive;
+font-family: 'Bebas Neue', cursive;
+background-color:lightgrey;
+}
+h1{
+color:red;
+text-align:center;
+font-size:50px;
+letter-spacing:6px;
+}
+th{
+font-size:30px;
+letter-spacing:3px;
+
+}
+td{
+font-size:20px;
+}
+td a{
+color:red;
+}

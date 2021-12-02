@@ -1,0 +1,129 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page isErrorPage="true" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><c:out value="${question.question}"/></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="resources/css/main.css" rel="stylesheet" type="text/css">
+<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+.logo{
+  font-size: 50px;
+  color: red;
+  margin: 0px;
+  position: relative;
+  left:20px;
+  width: 50%;
+  letter-spacing:6px;
+
+  padding-bottom:none;
+
+}
+.line{
+     font-size: 15px;
+     color: black;
+    position: relative;
+    background-color:grey;
+
+}
+.header-right{
+	float: right;
+	line-height: 25px;
+	padding: 20px
+}
+.header{
+padding-right: 30px 10px;
+overflow: hidden;
+margin: 0px;
+background-color:black;
+}
+button{
+ 	border: none;
+  color: black;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  background-color:lightgreen;
+}
+
+body{
+font-family: 'Abril Fatface', cursive;
+font-family: 'Bebas Neue', cursive;
+}
+h1{
+color:red;
+text-align:center;
+font-size:50px;
+letter-spacing:6px;
+}
+th{
+font-size:30px;
+letter-spacing:3px;
+
+}
+td{
+font-size:20px;
+
+}
+</style>
+</head>
+<body>
+ <div class="header">
+
+    <div class="header">
+
+        <div class="header-right">
+        	<a href="/questions"><button id="btn1">Go to Dashboard</button></a>
+
+        </div>
+    		<div class="logo">
+    			Q&A
+    		</div>
+    		<div class="line">
+    			Explore. Imagine. Create
+    		</div>
+
+        </div>
+
+	<p>
+		<h1><c:out value="${question.question}"/></h1>	
+	</p>
+
+	<p style="background-color:lightgrey;">
+	<h3>Answers:</h3>
+		<ul>
+			<c:forEach items="${question.answers}" var="a">
+				<li><c:out value="${a.answer}"/></li> 
+			</c:forEach>
+		</ul>
+	</p>
+	<p>
+		<h3>Add your answer:</h3>
+		<form:form action="/questions/${id}/answer" method="post" modelAttribute="newAnswer">
+		    <span style="color: red"><form:errors path="*"/>
+		    </span>
+		    <p>
+		        <form:label path="answer">Answer:</form:label>
+		        <form:input path="answer"/>
+		    </p>
+		    <p>
+		        <input type="submit" value="Submit"/>
+		    </p>
+		</form:form>
+	</p>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	
+</body>
+</html>
